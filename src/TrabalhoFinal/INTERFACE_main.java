@@ -21,11 +21,11 @@ import javax.swing.JTextField;
 
 public class INTERFACE_main {
 
-	private JFrame TelaLogin, TelaMenu, TelaCadVeiculo, TelaConsultarVeiculo, TelaExibirVeiculos, TelaCadCliente, ConsultarCliente;
+	private JFrame TelaLogin, TelaMenu, TelaCadVeiculo, TelaConsultarVeiculo, TelaExibirVeiculos, TelaCadCliente, ConsultarCliente, TelaVender;
 	private JList<String> list;
 	private DefaultListModel<String> model;
 	private JPasswordField passwordField;
-	private JTextField ruaCliente, bairroCliente, cidadeCliente, numeroCliente, estadoCliente, txtDigiteASenha, cadModeloVeiculo, cadMarcaVeiculo, cadNomeVeiculo, cadAnoVeiculo, cadPrecoVeiculo, consulModelo, consulCodigo, nomeCliente, cpfCliente, emailCliente, telCliente, idadeCliente;
+	private JTextField ruaCliente, bairroCliente, cidadeCliente, numeroCliente, estadoCliente, txtDigiteASenha, cadModeloVeiculo, cadMarcaVeiculo, cadNomeVeiculo, cadAnoVeiculo, cadPrecoVeiculo, consulModelo, consulCodigo, nomeCliente, cpfCliente, emailCliente, telCliente, idadeCliente, codVeiculo;
 	Vendedor vendedor = new Vendedor();
 
 	/**
@@ -40,6 +40,7 @@ public class INTERFACE_main {
 					window.TelaMenu.setVisible(false);
 					window.TelaCadVeiculo.setVisible(false);
 					window.TelaConsultarVeiculo.setVisible(false);
+					window.TelaVender.setVisible(false);
 					window.TelaExibirVeiculos.setVisible(false);
 					window.TelaCadCliente.setVisible(false);
 					//window.ConsultarCliente.setVisible(false);
@@ -98,6 +99,13 @@ public class INTERFACE_main {
 		TelaExibirVeiculos.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		TelaExibirVeiculos.getContentPane().setLayout(null);
 		
+		TelaVender = new JFrame();
+		TelaVender.setTitle("Vender Veiculo");
+		TelaVender.setResizable(false);
+		TelaVender.setBounds(201, 0, 400, 300);
+		TelaVender.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		TelaVender.getContentPane().setLayout(null);
+		
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setBounds(10, 10, 490, 790);
@@ -117,6 +125,42 @@ public class INTERFACE_main {
 		
 		///////////////////////////////////////////////////////////////////////////////////////////////
 		/////////////////////////////////////CAIXAS DE TEXTO//////////////////////////////////////////
+		
+		codVeiculo = new JTextField();
+		codVeiculo.setText("Digite o código do carro");
+		codVeiculo.setToolTipText("Digite o codigo único de cada carro");
+		codVeiculo.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				codVeiculo.setText("");
+			}
+		});
+		
 		numeroCliente = new JTextField();
 		numeroCliente.setText("Digite o numero da casa do Cliente");
 		numeroCliente.setToolTipText("Digite o numero da casa do Cliente");
@@ -831,17 +875,27 @@ public class INTERFACE_main {
 				}
 			}
 		});
-		btnOkLogin.setBounds(67, 92, 109, 42);
+btnOkLogin.setBounds(67, 92, 109, 42);
 		TelaLogin.getContentPane().add(btnOkLogin);
 		
-		JButton btnVender = new JButton("Vender veículo");
+		JButton btnVender = new JButton("Vender veÃ­culo");
 		btnVender.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				
+				TelaVender.setVisible(true);	
 			}
 		});
 		btnVender.setBounds(0, 10, 200, 42);
 		TelaMenu.getContentPane().add(btnVender);
+		
+
+		JButton btnVTelaVender = new JButton("Vender");
+		btnVTelaVender.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				
+			}
+		});
+		btnVTelaVender.setBounds(145, 200, 120, 42);
+		TelaVender.getContentPane().add(btnVTelaVender);
 		
 		JButton btnCadastrarVeiculo = new JButton("Cadastrar Veículo");
 		btnCadastrarVeiculo.addActionListener(new ActionListener(){
